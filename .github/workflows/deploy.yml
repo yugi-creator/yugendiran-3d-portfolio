@@ -1,0 +1,77 @@
+name: Deploy to Production VPS
+
+# Production deployment workflow for yugendiran.in
+# Triggers on successful CI run on main branch or manual dispatch.
+# Uses minimal-downtime container replacement via Docker Compose over SSH.
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    branches: [main]
+    types: [completed]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to VPS
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    environment:
+      name: production
+      url: https://yugendiran.in
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure SSH Key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
+      - name: Execute Controlled Minimal-Downtime Deployment
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PORT: ${{ secrets.VPS_PORT || '22' }}
+          APP_DIR: ${{ secrets.VPS_APP_DIR || '/opt/portfolio' }}
+        run: |
+          ssh -o StrictHostKeyChecking=no -p "$VPS_PORT" "$VPS_USER@$VPS_HOST" << 'EOF'
+            set -e
+
+            echo "=== 1. Navigating to Application Directory ==="
+            cd /opt/portfolio
+
+            echo "=== 2. Pulling Latest Changes from Repository ==="
+            git fetch origin main
+            git reset --hard origin/main
+
+            echo "=== 3. Ensuring Database & Redis Services are Healthy ==="
+            docker compose up -d postgres redis
+
+            echo "=== 4. Executing Drizzle Database Migrations ==="
+            # Runs non-destructive additive migrations before restarting application containers
+            docker compose run --rm backend npm run db:migrate
+
+            echo "=== 5. Building and Replacing Application Containers ==="
+            # Builds updated images and replaces containers with minimal downtime
+            docker compose up -d --no-deps --build backend frontend
+
+            echo "=== 6. Verifying Backend Readiness Probe ==="
+            # Poll readiness endpoint up to 30 seconds
+            for i in $(seq 1 6); do
+              if docker compose exec backend node -e "fetch('http://127.0.0.1:3001/health/ready').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"; then
+                echo "Backend readiness check passed."
+                break
+              fi
+              echo "Waiting for backend readiness... ($i/6)"
+              sleep 5
+            done
+
+            echo "=== 7. Reloading Nginx Reverse Proxy Cleanly ==="
+            # Gracefully reloads Nginx configuration without terminating existing client connections
+            docker compose up -d nginx
+            docker compose exec nginx nginx -s reload
+
+            echo "=== Deployment Completed Successfully ==="
+          EOF

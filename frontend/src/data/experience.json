@@ -1,0 +1,15 @@
+[
+  {
+    "id": "exp-1",
+    "company": "Company Name",
+    "role": "Senior Software Developer",
+    "startDate": "2023-01",
+    "endDate": null,
+    "location": "India",
+    "description": [
+      "Led development of production-grade applications",
+      "Designed and implemented scalable system architectures"
+    ],
+    "technologies": ["React", "TypeScript", "Node.js", "PostgreSQL"]
+  }
+]

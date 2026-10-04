@@ -1,0 +1,10 @@
+[
+  {
+    "id": "cert-1",
+    "name": "Certification Name",
+    "issuer": "Issuing Organization",
+    "date": "2024-06",
+    "credentialUrl": "https://example.com/credential",
+    "badgeUrl": "/images/certifications/cert-1.webp"
+  }
+]

@@ -1,0 +1,53 @@
+/* Global styles — imports the design system layers */
+@import './reset.css';
+@import './variables.css';
+@import './typography.css';
+@import './animations.css';
+
+/* Base body styles */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--color-accent-blue);
+  color: white;
+}
+
+/* Focus styles for accessibility (keyboard navigation) */
+:focus-visible {
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-light);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}

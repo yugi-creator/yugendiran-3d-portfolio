@@ -1,0 +1,141 @@
+.form {
+  background: var(--color-surface);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.charCount {
+  font-size: var(--text-xs);
+  color: var(--color-text-light);
+  font-variant-numeric: tabular-nums;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: var(--text-base);
+  color: var(--color-text);
+  background: #ffffff;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.input.hasError,
+.textarea.hasError {
+  border-color: #ef4444;
+}
+
+.input.hasError:focus,
+.textarea.hasError:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.errorText {
+  font-size: var(--text-xs);
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.submitBtn {
+  align-self: flex-start;
+  margin-top: var(--space-xs);
+}
+
+.apiErrorBox {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.apiErrorText {
+  font-size: var(--text-sm);
+  color: #b91c1c;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.successBox {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.successTitle {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: #065f46;
+}
+
+.successText {
+  font-size: var(--text-sm);
+  color: #047857;
+  max-width: 440px;
+  line-height: 1.6;
+}
+
+/* Hidden honeypot field — off-screen and non-focusable */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 479px) {
+  .form {
+    padding: var(--space-lg);
+  }
+}

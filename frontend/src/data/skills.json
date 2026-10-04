@@ -1,0 +1,32 @@
+[
+  {
+    "id": "frontend",
+    "name": "Frontend Development",
+    "icon": "monitor",
+    "skills": [
+      { "name": "React", "level": 90 },
+      { "name": "TypeScript", "level": 85 },
+      { "name": "HTML/CSS", "level": 90 }
+    ]
+  },
+  {
+    "id": "backend",
+    "name": "Backend Development",
+    "icon": "server",
+    "skills": [
+      { "name": "Node.js", "level": 85 },
+      { "name": "Express", "level": 80 },
+      { "name": "PostgreSQL", "level": 75 }
+    ]
+  },
+  {
+    "id": "ai-ml",
+    "name": "AI / Machine Learning",
+    "icon": "brain",
+    "skills": [
+      { "name": "Python", "level": 80 },
+      { "name": "TensorFlow", "level": 70 },
+      { "name": "LLM Integration", "level": 75 }
+    ]
+  }
+]

@@ -1,0 +1,105 @@
+.content {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2xl);
+}
+
+.message {
+  text-align: center;
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.methods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xl);
+  background: var(--color-surface);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+a.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.cardIcon {
+  color: var(--color-accent-blue);
+}
+
+.cardLabel {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  font-weight: 500;
+}
+
+.cardValue {
+  font-size: var(--text-base);
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.social {
+  text-align: center;
+}
+
+.socialLabel {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  margin-bottom: var(--space-md);
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-full);
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.socialLink:hover {
+  color: var(--color-accent-blue);
+  background: rgba(59, 130, 246, 0.06);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+@media (max-width: 479px) {
+  .methods {
+    grid-template-columns: 1fr;
+  }
+}

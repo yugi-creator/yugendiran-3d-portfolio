@@ -1,0 +1,24 @@
+{
+  "name": "Yugendiran",
+  "title": "AI Developer & Senior Software Developer",
+  "subtitle": "Building intelligent systems with clean architecture",
+  "bio": [
+    "Passionate about creating scalable, production-quality software solutions that leverage AI to solve real-world problems.",
+    "Experienced in designing and building full-stack applications with modern technologies, clean architecture principles, and a focus on performance."
+  ],
+  "location": "India",
+  "email": "contact@yugendiran.in",
+  "socialLinks": [
+    {
+      "platform": "github",
+      "url": "https://github.com/yugendiran",
+      "label": "GitHub"
+    },
+    {
+      "platform": "linkedin",
+      "url": "https://linkedin.com/in/yugendiran",
+      "label": "LinkedIn"
+    }
+  ],
+  "resumeUrl": "/resume.pdf"
+}

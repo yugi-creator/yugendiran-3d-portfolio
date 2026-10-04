@@ -1,0 +1,101 @@
+:root {
+  /* ========================
+     Colors — White premium theme
+     ======================== */
+  --color-bg: #fafbff;
+  --color-surface: #ffffff;
+  --color-glass: rgba(255, 255, 255, 0.6);
+  --color-glass-border: rgba(255, 255, 255, 0.3);
+
+  /* Accent colors — blue/purple gradient system */
+  --color-accent-blue: #3b82f6;
+  --color-accent-blue-dark: #2563eb;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-purple-dark: #7c3aed;
+
+  /* Gradients */
+  --gradient-accent: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple));
+  --gradient-accent-hover: linear-gradient(
+    135deg,
+    var(--color-accent-blue-dark),
+    var(--color-accent-purple-dark)
+  );
+
+  /* Text */
+  --color-text: #1e293b;
+  --color-text-muted: #64748b;
+  --color-text-light: #94a3b8;
+
+  /* ========================
+     Typography
+     ======================== */
+  --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Font sizes — fluid scale */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.8125rem);
+  --text-sm: clamp(0.8125rem, 0.75rem + 0.3125vw, 0.875rem);
+  --text-base: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-lg: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-xl: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --text-2xl: clamp(1.25rem, 1rem + 1.25vw, 1.5rem);
+  --text-3xl: clamp(1.5rem, 1.125rem + 1.875vw, 1.875rem);
+  --text-4xl: clamp(1.875rem, 1.25rem + 3.125vw, 2.25rem);
+  --text-5xl: clamp(2.25rem, 1.5rem + 3.75vw, 3rem);
+
+  /* ========================
+     Spacing
+     ======================== */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  /* ========================
+     Border radius
+     ======================== */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* ========================
+     Shadows
+     ======================== */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.05);
+  --shadow-glass: 0 8px 32px rgba(59, 130, 246, 0.08);
+
+  /* Glass effect */
+  --blur-glass: blur(12px);
+
+  /* ========================
+     Transitions
+     ======================== */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* ========================
+     Layout
+     ======================== */
+  --max-width: 1200px;
+  --header-height: 72px;
+
+  /* ========================
+     Z-index scale
+     ======================== */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-preloader: 1000;
+}
